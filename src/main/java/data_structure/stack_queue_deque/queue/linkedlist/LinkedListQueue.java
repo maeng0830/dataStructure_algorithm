@@ -1,7 +1,7 @@
 package data_structure.stack_queue_deque.queue.linkedlist;
 
+import data_structure.stack_queue_deque.queue.QueueInterface;
 import java.util.NoSuchElementException;
-import queue.QueueInterface;
 
 public class LinkedListQueue<T> implements QueueInterface<T> {
 

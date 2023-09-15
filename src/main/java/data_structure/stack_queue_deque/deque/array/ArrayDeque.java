@@ -1,7 +1,8 @@
 package data_structure.stack_queue_deque.deque.array;
 
+import data_structure.stack_queue_deque.queue.QueueInterface;
 import java.util.NoSuchElementException;
-import queue.QueueInterface;
+
 
 public class ArrayDeque<T> implements QueueInterface<T> {
 
