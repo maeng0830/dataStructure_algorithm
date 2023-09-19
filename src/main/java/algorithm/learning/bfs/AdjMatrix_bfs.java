@@ -1,10 +1,14 @@
-package algorithm.learning.dfs;
+package algorithm.learning.bfs;
 
-public class AdjMatrix_dfs {
+import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.Queue;
+
+public class AdjMatrix_bfs {
 
 	private int[][] adjMatrix;
 
-	public AdjMatrix_dfs(int size) {
+	public AdjMatrix_bfs(int size) {
 		if (size <= 0) {
 			System.out.println("그래프는 정점이 1개 이상이어야 합니다.");
 			return;
@@ -51,30 +55,31 @@ public class AdjMatrix_dfs {
 		adjMatrix[vertex1][vertex2] = weight;
 	}
 
-	public void dfs(int index) {
+	public void bfs(int index) {
 		if (valid(index, index)) {
 			return;
 		}
 
 		// 방문 여부 체크를 위한 배열
 		boolean[] visited = new boolean[adjMatrix.length];
-		// index는 탐색의 시작 정점이다.
-		dfsUtil(index, visited);
-	}
+		Queue<Integer> queue = new LinkedList<>();
 
-	private void dfsUtil(int index, boolean[] visited) {
-		// 현재 정점을 방문한 경우 방문 여부를 체크한다.
 		visited[index] = true;
+		queue.add(index);
 
-		System.out.print(index + " ");
+		while (queue.size() != 0) {
+			// 방문한 정점을 큐에서 추출
+			index = queue.poll();
+			System.out.print(index + " ");
 
-		int[] matrix = adjMatrix[index];
-
-		// 정점을 순회하면서 현재 정점의 인접 정점을 확인한다.
-		for (int i = 1; i < matrix.length; i++) {
-			// 현재 정점의 인접 정점이면서 현재 방문하지 않은 상태인 경우 방문한다.
-			if (matrix[i] != 0 && !visited[i]) {
-				dfsUtil(i, visited);
+			// 모든 정점 중 방문한 정점과 인접한 정점을 확인한다.
+			int[] matrix = adjMatrix[index];
+			for (int i = 1; i < matrix.length; i++) {
+				// 인접 정점 중 아직 방문하지 않은 정점이면 방문한 것으로 표시하고 큐에 삽입
+				if (matrix[i] != 0 && !visited[i]) {
+					visited[i] = true;
+					queue.add(i);
+				}
 			}
 		}
 	}

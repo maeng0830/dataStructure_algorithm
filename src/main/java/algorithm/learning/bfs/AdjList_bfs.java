@@ -1,11 +1,12 @@
-package algorithm.learning.dfs;
-
+package algorithm.learning.bfs;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Queue;
 
-public class AdjList_dfs<T> {
+public class AdjList_bfs<T> {
 	private int size;
 	private List<List<Edge>> adjList = new ArrayList<>(); // 정점들의 목록
 	private List<T> dataList = new ArrayList<>(); // 정점들의 데이터를 저장한다.
@@ -24,32 +25,34 @@ public class AdjList_dfs<T> {
 		size++; // 정점 개수 증가
 	}
 
-	public void dfs(int index) {
+	public void bfs(int index) {
 		if (valid(index)) {
 			return;
 		}
 
 		// 방문 여부 체크를 위한 배열
 		boolean[] visited = new boolean[size];
-		// index는 탐색의 시작 정점이다.
-		dfsUtil(index, visited);
-	}
+		Queue<Integer> queue = new LinkedList<>();
 
-	private void dfsUtil(int index, boolean[] visited) {
-		// 현재 정점을 방문한 경우 방문 여부를 체크한다.
 		visited[index] = true;
+		queue.add(index);
 
-		System.out.print(index + " ");
+		while (queue.size() != 0) {
+			// 방문한 정점을 큐에서 추출
+			index = queue.poll();
+			System.out.print(index + " ");
 
-		ListIterator<Edge> listIterator = adjList.get(index).listIterator();
+			// 방문한 정점의 인접 정점을 가져오고 순회한다.
+			ListIterator<Edge> listIterator = adjList.get(index).listIterator();
+			while (listIterator.hasNext()) {
+				// 인접한 정점
+				int n = listIterator.next().getDestination();
 
-		// 현재 정점과 인접한 정점을 순회한다.
-		while (listIterator.hasNext()) {
-			int cur = listIterator.next().getDestination();
-
-			// 현재 정점과 인접한 정점 중 방문하지 않은 상태인 경우 방문한다.
-			if (!visited[cur]) {
-				dfsUtil(cur, visited);
+				// 방문하지 않은 노드면 방문한 것으로 표시하고 큐에 삽입
+				if (!visited[n]) {
+					visited[n] = true;
+					queue.add(n);
+				}
 			}
 		}
 	}
