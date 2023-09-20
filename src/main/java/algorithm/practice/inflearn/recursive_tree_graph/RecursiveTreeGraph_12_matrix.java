@@ -1,4 +1,4 @@
-package algorithm.practice.inflearn.dfs_bfs;
+package algorithm.practice.inflearn.recursive_tree_graph;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 // DFS를 통해 두 정점간의 모든 경로를 탐색할 수 있다.
-public class Dfs_bfs_12_matrix {
+public class RecursiveTreeGraph_12_matrix {
 	static int answer = 0;
 
 	public static void solution(int start, int target, int[][] graph, boolean[] visited) {

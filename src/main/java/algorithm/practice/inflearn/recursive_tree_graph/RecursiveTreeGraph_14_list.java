@@ -1,4 +1,4 @@
-package algorithm.practice.inflearn.dfs_bfs;
+package algorithm.practice.inflearn.recursive_tree_graph;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 // BFS는 두 정점간의 최단 거리를 구하는데 사용할 수 있다.
-public class Dfs_bfs_14_list {
+public class RecursiveTreeGraph_14_list {
 
 	public static void solution(ArrayList<ArrayList<Integer>> graph, int start) {
 		boolean[] visited = new boolean[graph.size()];
