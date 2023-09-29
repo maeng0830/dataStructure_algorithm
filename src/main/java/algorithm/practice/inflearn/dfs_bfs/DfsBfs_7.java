@@ -24,7 +24,7 @@ public class DfsBfs_7 {
 		}
 
 		if (memo[n][r] == 0) {
-			return solution(n - 1, r - 1, memo) + solution(n - 1, r, memo);
+			return memo[n][r] = solution(n - 1, r - 1, memo) + solution(n - 1, r, memo);
 		} else {
 			return memo[n][r];
 		}
