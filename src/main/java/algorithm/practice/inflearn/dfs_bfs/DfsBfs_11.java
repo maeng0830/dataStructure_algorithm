@@ -38,7 +38,7 @@ public class DfsBfs_11 {
 	static int[] dx = {-1, 0, 1, 0};
 	static int[] dy = {0, 1, 0, -1};
 
-	public static class Point {
+	public class Point {
 		int y;
 		int x;
 
@@ -48,24 +48,27 @@ public class DfsBfs_11 {
 		}
 	}
 
-	public static int solution(int y, int x, int[][] maze, int[][] dis) {
+	public int solution(int y, int x, int[][] maze, int[][] dis) {
 		Queue<Point> queue = new LinkedList<>();
 
 		queue.offer(new Point(y, x));
 		maze[y][x] = 1;
 
 		while (!queue.isEmpty()) {
-			Point tmp = queue.poll();
+			Point tmp = queue.poll(); // 현재 지점
 
 			for (int i = 0; i < 4; i++) {
+				//  다음 지점 후보군
 				int ny = tmp.y + dy[i];
 				int nx = tmp.x + dx[i];
 
+				// 조건을 충족하는 다음 지점 탐색
 				if (ny >= 1 && ny <= 7 && nx >= 1 && nx <= 7 && maze[ny][nx] != 1) {
-					maze[ny][nx] = 1;
-					queue.offer(new Point(ny, nx));
-					dis[ny][nx] = dis[tmp.y][tmp.x] + 1;
+					maze[ny][nx] = 1; // 다음 지점 방문
+					queue.offer(new Point(ny, nx)); // 다음 지점을 큐에 삽입
+					dis[ny][nx] = dis[tmp.y][tmp.x] + 1; // 다음 지점까지의 거리 저장
 
+					// 방문한 지점이 목적지일 경우, 거리 반환
 					if (ny == 7 && nx == 7) {
 						return dis[ny][nx];
 					}
@@ -77,6 +80,8 @@ public class DfsBfs_11 {
 	}
 
 	public static void main(String[] args) throws IOException {
+		DfsBfs_11 dfsBfs_11 = new DfsBfs_11();
+
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
 
@@ -91,6 +96,6 @@ public class DfsBfs_11 {
 			}
 		}
 
-		System.out.println(solution(1, 1, maze, dis));
+		System.out.println(dfsBfs_11.solution(1, 1, maze, dis));
 	}
 }
