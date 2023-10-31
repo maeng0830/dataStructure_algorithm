@@ -8,7 +8,27 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-// BFS는 두 정점간의 최단 거리를 구하는데 사용할 수 있다.
+/**
+ * BFS는 두 정점간의 최단 거리를 구하는데 사용할 수 있다.
+ *
+ * 6 9
+ * 1 3
+ * 1 4
+ * 2 1
+ * 2 5
+ * 3 4
+ * 4 5
+ * 4 6
+ * 6 2
+ * 6 5
+ *
+ * 1: 0
+ * 2: 3
+ * 3: 1
+ * 4: 1
+ * 5: 2
+ * 6: 2
+ */
 public class RecursiveTreeGraph_14_list {
 
 	public static void solution(ArrayList<ArrayList<Integer>> graph, int start) {
@@ -63,8 +83,7 @@ public class RecursiveTreeGraph_14_list {
 			graph.get(a).add(b);
 		}
 
-		st = new StringTokenizer(br.readLine());
-		int start = Integer.parseInt(st.nextToken());
+		int start = 1;
 
 		solution(graph, start);
 	}
