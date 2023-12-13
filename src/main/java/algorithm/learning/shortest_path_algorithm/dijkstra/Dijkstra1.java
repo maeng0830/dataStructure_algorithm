@@ -50,17 +50,17 @@ public class Dijkstra1 {
 	}
 
 	public static void dijkstra() {
-		// 최소 비용을 저장할 배열 초기화(최댓값)
+		// 최소 비용을 저장할 dp용 메모리 초기화
 		int[] dist = new int[v + 1];
 
 		for (int i = 0; i < dist.length; i++) {
 			dist[i] = Integer.MAX_VALUE;
 		}
+		dist[start] = 0;
 
 		// dp용 메모리 업데이트
 		PriorityQueue<Node> queue = new PriorityQueue<>();
 		queue.offer(new Node(start, 0));
-		dist[start] = 0;
 
 		while (!queue.isEmpty()) {
 			Node curNode = queue.poll();
@@ -92,7 +92,6 @@ public class Dijkstra1 {
 				System.out.print(dist[i] + " ");
 			}
 		}
-		System.out.println();
 	}
 
 	public static void main(String[] args) throws IOException {
