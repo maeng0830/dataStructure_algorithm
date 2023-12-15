@@ -43,9 +43,10 @@ public class UnionFind {
 		int size = Integer.parseInt(br.readLine()); // 5
 
 		// MakeSet 연산
+		// parents는 각 원소(index)의 부모(value)를 담는 배열
 		int[] parents = makeSet(size);
 
-		// 각 원소는 자기 자신을 가르키고 있다.
+		// 초기에 각 원소는 자기 자신을 가르키고 있다.
 		// [0, 1, 2, 3, 4, 5]
 		System.out.println(Arrays.toString(parents));
 
@@ -84,6 +85,7 @@ public class UnionFind {
 		// 1번 원소가 1번 인덱스에 대응할 수 있도록 배열 크기를 선언
 		int[] parents = new int[size + 1];
 
+		// 각 원소는 자기 자신을 가르킨다.
 		for (int i = 1; i < parents.length; i++) {
 			parents[i] = i;
 		}
@@ -92,17 +94,18 @@ public class UnionFind {
 	}
 
 	private static int find(int[] parents, int x) {
-		if (parents[x] == x) {
+		if (parents[x] == x) { // x가 자기 자신을 가르킨다 = x는 집합의 대표
 			return x;
-		} else {
+		} else { // x가 속한 집합의 대표를 재귀적으로 찾는다.
 			return parents[x] = find(parents, parents[x]);
 		}
 	}
 
 	private static void union(int[] parents, int a, int b) {
-		int aRep = find(parents, a);
-		int bRep = find(parents, b);
+		int aRep = find(parents, a); // a가 속한 집합의 대표
+		int bRep = find(parents, b); // b가 속한 집합의 대표
 
+		// 값이 작은 대표를 기준으로 집합을 병합
 		if (aRep > bRep) {
 			parents[aRep] = bRep;
 		} else {
