@@ -3,9 +3,6 @@ package algorithm.learning.binary_search;
 import java.io.IOException;
 import java.util.Arrays;
 
-//
-//
-
 /**
  * 이진 탐색은 데이터가 정렬되어있을 때, O(logN)의 시간 복잡도로 목표 데이터를 찾는 알고리즘이다.
  * 재귀함수 또는 반복문을 통해 구현할 수 있다.
