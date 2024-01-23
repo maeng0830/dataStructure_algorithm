@@ -16,7 +16,14 @@ public class Dfs_Bfs_16173 {
 
 	public static String dfs(int y, int x) {
 		if (answer.equals("HaruHaru") || graph[y][x] == -1) {
-			answer = "HaruHaru";
+			if (!answer.equals("HaruHaru")) {
+				answer = "HaruHaru";
+			}
+
+			return answer;
+		}
+
+		if (graph[y][x] == 0) {
 			return answer;
 		}
 
