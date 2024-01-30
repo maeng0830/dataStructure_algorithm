@@ -1,7 +1,6 @@
 package data_structure.tree.binray_search_tree;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 public class BinarySearchTree<E extends Comparable<E>> {
